@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 610685206374889964}
   - component: {fileID: 3707271697781168139}
+  - component: {fileID: 4239229481169118142}
   m_Layer: 0
   m_Name: Shelve
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610685206374889960}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.2, y: -0.39, z: 2.41}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45,11 +46,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac0002ab31a9e8408033c893a6f25ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tradeItem: {fileID: -5735473167334382153, guid: aa19f47c17c7b74479710dc6555a021d,
-    type: 3}
   shalve: {fileID: 8894731532726721809}
   gridDimensions: {x: 2, y: 4}
   spacing: 0.4
+--- !u!65 &4239229481169118142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610685206374889960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8894731532726721809
 GameObject:
   m_ObjectHideFlags: 0

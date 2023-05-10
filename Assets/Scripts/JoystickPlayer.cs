@@ -22,10 +22,12 @@ public class JoystickPlayer : MonoBehaviour
 		Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
 
 		rb.velocity = direction * speed * Time.fixedDeltaTime;
-		transform.rotation = Quaternion.LookRotation(rb.velocity);
+
 		if(rb.velocity.magnitude > 0)
 		{
 			animator.SetBool("run", true);
+			transform.rotation = Quaternion.LookRotation(rb.velocity);
+
 
 		}
 		else

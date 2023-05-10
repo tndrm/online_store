@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3855161854352926562}
   - component: {fileID: -5735473167334382153}
   m_Layer: 0
-  m_Name: Trade Item
+  m_Name: Product1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46f09e783826ab049805f3ac907a824a, type: 2}
+  - {fileID: 2100000, guid: 1eef2a6990e64c04d8db6068fe7a46b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,3 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0581cb0b34ff37c419e10c941a44550e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: Product1
+  spritePrefab: {fileID: 7523702114691281654, guid: e554874db55e2064da80d6c72964cd7e,
+    type: 3}
