@@ -27,8 +27,6 @@ public class JoystickPlayer : MonoBehaviour
 		{
 			animator.SetBool("run", true);
 			transform.rotation = Quaternion.LookRotation(rb.velocity);
-
-
 		}
 		else
 		{
