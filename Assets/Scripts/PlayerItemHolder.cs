@@ -16,8 +16,7 @@ public class PlayerItemHolder : MonoBehaviour
 	public void TakeItem(TradeItem newItem)
 	{
 		if(tradeItemList.Count < maxHoldingItems)
-		{		Debug.Log(newItem.GetItemType);
-
+		{		
 			TradeItem newObj = Instantiate(newItem, spawnPoint.position, Quaternion.identity, transform);
 			tradeItemList.Add(newObj);
 			saver.SaveHoldItem(newObj);
