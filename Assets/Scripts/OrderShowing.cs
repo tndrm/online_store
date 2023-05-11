@@ -10,7 +10,7 @@ public class OrderShowing : MonoBehaviour
 
 	private List<GameObject> shownSprites;
 
-	private void Start()
+	private void Awake()
 	{
 		shownSprites = new List<GameObject>();
 	}

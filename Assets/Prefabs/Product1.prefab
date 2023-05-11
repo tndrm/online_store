@@ -113,3 +113,4 @@ MonoBehaviour:
   itemType: Product1
   spritePrefab: {fileID: 7523702114691281654, guid: e554874db55e2064da80d6c72964cd7e,
     type: 3}
+  cost: 10
