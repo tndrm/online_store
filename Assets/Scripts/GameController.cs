@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] List<TradeItem> productList;
+    public List<TradeItem> productList;
     [SerializeField] Shelve shelvePrefab;
     [SerializeField] List<Transform> shelvePositions;
 	[SerializeField] Vector2 itemsInPackageRange = new Vector2(1, 3f);
@@ -25,8 +24,6 @@ public class GameController : MonoBehaviour
         packingTable = (PackingTable)FindObjectOfType(typeof(PackingTable));
         ShowNextOrder();
 	}
-
-
 
     private void SpawnShelve(Transform spawnPoint, TradeItem product) 
     {

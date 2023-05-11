@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.31
+    agentRadius: 0.3
     agentHeight: 2
     agentSlope: 0
     agentClimb: -0
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.10333333
+    cellSize: 0.1
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -416,9 +416,11 @@ GameObject:
   m_Component:
   - component: {fileID: 404688773}
   - component: {fileID: 404688772}
+  - component: {fileID: 404688776}
+  - component: {fileID: 404688778}
+  - component: {fileID: 404688779}
   - component: {fileID: 404688775}
   - component: {fileID: 404688774}
-  - component: {fileID: 404688776}
   - component: {fileID: 404688777}
   m_Layer: 0
   m_Name: Player
@@ -522,6 +524,30 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 3
   m_ObstacleAvoidanceType: 4
+--- !u!114 &404688778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404688771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5378ce81bd4ae234f909e7ee8cd50c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &404688779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404688771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dcd8d2c9db07614b80d9b2e96b21b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &443311406
 GameObject:
   m_ObjectHideFlags: 0
