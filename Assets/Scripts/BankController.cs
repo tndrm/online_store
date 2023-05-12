@@ -9,9 +9,11 @@ public class BankController : MonoBehaviour
 	public float duration = 1f;
 	private float timer;
 	private int currentshowValue;
+	private BankSavingService saver;
 
 	private void Start()
 	{
+		saver = GetComponent<BankSavingService>();
 		timer = 0f;
 	}
 
@@ -25,17 +27,23 @@ public class BankController : MonoBehaviour
 			coinText.text = currentshowValue.ToString();
 		}
 	}
-
 	public void Increace(int coinValue)
 	{
 		lastValue = coinCount;
 		coinCount += coinValue;
 		timer = 0;
+		saver.SaveBalance(coinCount);
 	}
 	public void Reduce(int coinValue)
 	{
 		lastValue = coinCount;
 		coinCount -= coinValue;
 		timer = 0;
+		saver.SaveBalance(coinCount);
+	}
+
+	public void SetBalance(int balance)
+	{
+		coinCount = balance;
 	}
 }
