@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5206855868279930411}
-  - component: {fileID: 2553774736650125541}
   - component: {fileID: -4446593693246650157}
+  - component: {fileID: 7854649715814029342}
   m_Layer: 0
   m_Name: Packed Order
   m_TagString: Untagged
@@ -34,18 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2553774736650125541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301097575335373721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6e0fa294f607ea45a0c288586aa5a81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &-4446593693246650157
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -88,6 +76,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7854649715814029342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301097575335373721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0581cb0b34ff37c419e10c941a44550e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: packedOrder
+  spritePrefab: {fileID: 0}
+  cost: 0
 --- !u!1 &5803634846400973519
 GameObject:
   m_ObjectHideFlags: 0

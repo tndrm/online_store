@@ -1,46 +1,40 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerItemHolder : MonoBehaviour
 {
 	[SerializeField] Transform spawnPoint;
 	[SerializeField] int maxHoldingItems;
-	private List<TradeItem> tradeItemList;
+	private TradeItem holdedItem;
 	private HoldedItemSaver saver;
 
 	private void Awake()
 	{
-		tradeItemList = new List<TradeItem>();
 		saver = this.GetComponent<HoldedItemSaver>();
 	}
-	public void TakeItem(TradeItem newItem)
+	public TradeItem TakeItem(TradeItem item)
 	{
-		if(tradeItemList.Count < maxHoldingItems)
-		{		
-			TradeItem newObj = Instantiate(newItem, spawnPoint.position, Quaternion.identity, transform);
-			tradeItemList.Add(newObj);
-			saver.SaveHoldItem(newObj);
-		}
-	}
-	public List<TradeItem> PutItems(List<TradeItem> needList)
-	{
-		List<TradeItem> crossedList = new List<TradeItem>();
+		TradeItem takenItem = null;
 
-		foreach (TradeItem holdedItem in tradeItemList)
+		if (!holdedItem)
 		{
-			foreach(TradeItem neededItem in needList)
-			{
-				if(holdedItem.GetItemType == neededItem.GetItemType){
-					crossedList.Add(holdedItem);
-					break;
-				};
-			}
+			item.transform.SetParent(transform);
+			item.transform.position = spawnPoint.position;
+			item.transform.rotation = Quaternion.identity;
+			holdedItem = item;
+			takenItem = item;
+			saver.SaveHoldItem(item);
 		}
-
-		foreach(TradeItem crossed in crossedList) {
-			tradeItemList.Remove(crossed);
+		return takenItem;
+	}
+	public TradeItem PutItem(TradeItem needItem)
+	{
+		TradeItem putedItem = null;
+		if (holdedItem && holdedItem.GetItemType == needItem.GetItemType)
+		{
+			putedItem = holdedItem;
+			holdedItem = null;
 			saver.SaveHoldItem();
 		}
-		return crossedList;
+		return putedItem;
 	}
 }

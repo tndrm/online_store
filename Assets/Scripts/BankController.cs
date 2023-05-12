@@ -3,30 +3,39 @@ using UnityEngine;
 
 public class BankController : MonoBehaviour
 {
-	public TMP_Text coinText; 
+	public TMP_Text coinText;
 	private int coinCount = 0;
+	private int lastValue = 0;
+	public float duration = 1f;
+	private float timer;
+	private int currentshowValue;
 
 	private void Start()
 	{
-		UpdateCoinText();
+		timer = 0f;
 	}
 
-	private void UpdateCoinText()
+	private void Update()
 	{
-		if (coinText != null)
+		timer += Time.deltaTime;
+
+		if (timer < duration || currentshowValue != coinCount)
 		{
-			coinText.text  = coinCount.ToString();
+			currentshowValue = (int)Mathf.Round(Mathf.Lerp(lastValue, coinCount, timer / duration));
+			coinText.text = currentshowValue.ToString();
 		}
 	}
 
-	private void Increace(int coinValue)
+	public void Increace(int coinValue)
 	{
+		lastValue = coinCount;
 		coinCount += coinValue;
-		UpdateCoinText();
+		timer = 0;
 	}
-	private void Reduce(int coinValue)
+	public void Reduce(int coinValue)
 	{
+		lastValue = coinCount;
 		coinCount -= coinValue;
-		UpdateCoinText();
+		timer = 0;
 	}
 }

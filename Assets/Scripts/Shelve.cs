@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class Shelve : MonoBehaviour
@@ -6,12 +6,13 @@ public class Shelve : MonoBehaviour
 	[SerializeField] GameObject shalve;
 	public Vector2Int gridDimensions = new Vector2Int(5, 5);
 	public float spacing = 1.0f;
-	private TradeItem product;
+	private TradeItem productPrefab;
+	private TradeItem itemToTake;
 
 
 	public void SpawnObjects(TradeItem tradeItem)
 	{
-		product = tradeItem;
+		productPrefab = tradeItem;
 		Vector3 center = shalve.transform.position;
 		Vector3 spawnPosition = center - new Vector3((gridDimensions.x - 1) * spacing / 2, -.2f, (gridDimensions.y - 1) * spacing / 2);
 		for (int i = 0; i < gridDimensions.x; i++)
@@ -25,10 +26,11 @@ public class Shelve : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-
-		if (other.gameObject.name == "Player")
+		PlayerItemHolder holder = other.gameObject.GetComponent<PlayerItemHolder>();
+		if (holder)
 		{
-			other.gameObject.GetComponent<PlayerItemHolder>().TakeItem(product);
+			if(!itemToTake) itemToTake = Instantiate(productPrefab, transform.position, Quaternion.identity, transform);
+			holder.TakeItem(itemToTake);
 		}
 	}
 }

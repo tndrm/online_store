@@ -9,4 +9,8 @@ public class TradeItem : MonoBehaviour
 	public string GetItemType => itemType;
 	public GameObject GetItemSprite => spritePrefab;
 	public int GetCost => cost;
+	public void SetCost(int newCost)
+	{
+		cost = newCost;
+	}
 }

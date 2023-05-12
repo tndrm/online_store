@@ -7,9 +7,9 @@ using UnityEngine;
 public class PackingTable : MonoBehaviour
 {
 	[SerializeField] Transform productsStackPoint;
-	[SerializeField] PackedOrder packedOrderPrefab;
+	[SerializeField] TradeItem packedOrderPrefab;
 	public List<TradeItem> nededItemsList;
-	private List<PackedOrder> readyOrders;
+	private List<TradeItem> readyOrders;
 	private List<TradeItem> readyForPaking;
 	public OrderShowing orderShowing;
 
@@ -17,7 +17,7 @@ public class PackingTable : MonoBehaviour
 
 	void Start()
 	{
-		readyOrders = new List<PackedOrder>();
+		readyOrders = new List<TradeItem>();
 		readyForPaking = new List<TradeItem>();
 		gameController = (GameController)FindObjectOfType(typeof(GameController));
 
@@ -25,15 +25,18 @@ public class PackingTable : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.name == "Player")
+		PlayerItemHolder holder = other.gameObject.GetComponent<PlayerItemHolder>();
+		if (holder)
 		{
-			List<TradeItem> puttedList = other.gameObject.GetComponent<PlayerItemHolder>().PutItems(nededItemsList);
-
-			for (int i = 0; i < puttedList.Count; i++)
+			for (int i = 0; i < nededItemsList.Count; i++) 
 			{
-				PutOnTable(puttedList[i]);
+				TradeItem puttedItem = holder.PutItem(nededItemsList[i]);
+				if (puttedItem) PutOnTable(puttedItem);
 			}
-
+			if (readyOrders.Count > 0)
+			{
+				readyOrders.Remove(holder.TakeItem(readyOrders.Last()));
+			}
 			if (nededItemsList.Count > 0)
 			{
 				UpdateNededListShowing();
@@ -77,7 +80,7 @@ public class PackingTable : MonoBehaviour
 		}
 		if (readyOrders.Any())
 		{
-			PackedOrder lastOrderOnTable = readyOrders.Last();
+			TradeItem lastOrderOnTable = readyOrders.Last();
 			Bounds lastItemBounds = lastOrderOnTable.GetComponent<Renderer>().bounds;
 			putPoint.y = Math.Max(putPoint.y, lastItemBounds.max.y);
 		}
@@ -92,7 +95,7 @@ public class PackingTable : MonoBehaviour
 			totalCost += product.GetCost;
 			Destroy(product.gameObject);
 		}
-		PackedOrder package = Instantiate(packedOrderPrefab, GetPutPoint(packedOrderPrefab.gameObject), Quaternion.identity, transform);
+		TradeItem package = Instantiate(packedOrderPrefab, GetPutPoint(packedOrderPrefab.gameObject), Quaternion.identity, transform);
 		package.SetCost(totalCost);
 		readyOrders.Add(package);
 		readyForPaking.Clear();
