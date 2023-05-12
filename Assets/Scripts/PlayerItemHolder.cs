@@ -37,4 +37,13 @@ public class PlayerItemHolder : MonoBehaviour
 		}
 		return putedItem;
 	}
+
+	public void DiscardHoldedItem()
+	{
+		if (holdedItem)
+		{
+			Destroy(holdedItem.gameObject);
+			saver.SaveHoldItem();
+		}
+	}
 }
