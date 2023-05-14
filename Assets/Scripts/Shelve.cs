@@ -26,7 +26,7 @@ public class Shelve : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		PlayerItemHolder holder = other.gameObject.GetComponent<PlayerItemHolder>();
+		ProductHolder holder = other.gameObject.GetComponent<ProductHolder>();
 		if (holder)
 		{
 			if(!itemToTake) itemToTake = Instantiate(productPrefab, transform.position, Quaternion.identity, transform);

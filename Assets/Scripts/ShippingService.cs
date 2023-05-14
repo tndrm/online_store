@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
 public class ShippingService : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class ShippingService : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		PlayerItemHolder holder = other.gameObject.GetComponent<PlayerItemHolder>();
+		ProductHolder holder = other.gameObject.GetComponent<ProductHolder>();
 
 		if (holder)
 		{

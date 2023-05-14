@@ -1,15 +1,14 @@
 using UnityEngine;
 
-public class PlayerItemHolder : MonoBehaviour
+public class ProductHolder : MonoBehaviour
 {
 	[SerializeField] Transform spawnPoint;
-	[SerializeField] int maxHoldingItems;
-	private TradeItem holdedItem;
+	public TradeItem holdedItem;
 	private HoldedItemSaver saver;
 
 	private void Awake()
 	{
-		saver = this.GetComponent<HoldedItemSaver>();
+		//saver = this.GetComponent<HoldedItemSaver>();
 	}
 	public TradeItem TakeItem(TradeItem item)
 	{
@@ -22,7 +21,7 @@ public class PlayerItemHolder : MonoBehaviour
 			item.transform.rotation = transform.rotation;
 			holdedItem = item;
 			takenItem = item;
-			saver.SaveHoldItem(item);
+			//saver.SaveHoldItem(item);
 		}
 		return takenItem;
 	}
@@ -33,7 +32,7 @@ public class PlayerItemHolder : MonoBehaviour
 		{
 			putedItem = holdedItem;
 			holdedItem = null;
-			saver.SaveHoldItem();
+			//saver.SaveHoldItem();
 		}
 		return putedItem;
 	}
@@ -43,7 +42,7 @@ public class PlayerItemHolder : MonoBehaviour
 		if (holdedItem)
 		{
 			Destroy(holdedItem.gameObject);
-			saver.SaveHoldItem();
+			//saver.SaveHoldItem();
 		}
 	}
 }

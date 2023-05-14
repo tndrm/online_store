@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8134921277167872289}
   - component: {fileID: 3855161854352926562}
   m_Layer: 0
-  m_Name: Product1
+  m_Name: Product3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2915893765973515619}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.5000005, y: 0.33, z: -4.1100006}
   m_LocalScale: {x: 0.3, y: 0.2, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,11 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0581cb0b34ff37c419e10c941a44550e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: Product1
-  spritePrefab: {fileID: 7523702114691281654, guid: e554874db55e2064da80d6c72964cd7e,
+  itemType: Product3
+  spritePrefab: {fileID: 2202529091272502574, guid: a4afd0986df46674a8cd2254a69153b8,
     type: 3}
-  cost: 10
-  buyingCost: 100
+  cost: 40
+  buyingCost: 200
+  shelvePosition: {fileID: 6641253264589687313, guid: a6743aa7b14071d49b2f5553afce503d,
+    type: 3}
 --- !u!33 &1591281722933215855
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -80,7 +82,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1eef2a6990e64c04d8db6068fe7a46b4, type: 2}
+  - {fileID: 2100000, guid: d42dfd30296b8bf4a8a75b271822226a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

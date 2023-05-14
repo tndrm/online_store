@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bin : MonoBehaviour
 {
 	private void OnTriggerEnter(Collider other)
 	{
-		PlayerItemHolder holder = other.gameObject.GetComponent<PlayerItemHolder>();
+		ProductHolder holder = other.gameObject.GetComponent<ProductHolder>();
 		if (holder)
 		{
 			holder.DiscardHoldedItem();

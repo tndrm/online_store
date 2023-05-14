@@ -12,20 +12,19 @@ public class PackingTable : MonoBehaviour
 	private List<TradeItem> readyOrders;
 	private List<TradeItem> readyForPaking;
 	public OrderShowing orderShowing;
-
-	private GameController gameController;
+	private OrderGenerator orderGenerator;
 
 	void Start()
 	{
 		readyOrders = new List<TradeItem>();
 		readyForPaking = new List<TradeItem>();
-		gameController = (GameController)FindObjectOfType(typeof(GameController));
+		orderGenerator = GetComponent<OrderGenerator>();
 
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
-		PlayerItemHolder holder = other.gameObject.GetComponent<PlayerItemHolder>();
+		ProductHolder holder = other.gameObject.GetComponent<ProductHolder>();
 		if (holder)
 		{
 			for (int i = 0; i < nededItemsList.Count; i++) 
@@ -44,7 +43,7 @@ public class PackingTable : MonoBehaviour
 			else
 			{
 				PackOrder();
-				gameController.ShowNextOrder();
+				orderGenerator.ShowNextOrder();
 			}
 		}
 	}
@@ -110,6 +109,10 @@ public class PackingTable : MonoBehaviour
 	private void UpdateNededListShowing()
 	{
 		orderShowing.UpdateItemsListShowing(nededItemsList);
+	}
 
+	public TradeItem GetNextNededItem()
+	{
+		return nededItemsList[0];
 	}
 }

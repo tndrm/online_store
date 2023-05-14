@@ -13,7 +13,6 @@ public class MainCharacterAnimator : MonoBehaviour
 	}
     public void Update()
     {
-
 		if(rb.velocity != Vector3.zero)
 		{
 			animator.SetBool("run", true);

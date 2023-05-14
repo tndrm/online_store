@@ -33,7 +33,7 @@ public class HoldedItemSaver : MonoBehaviour
 			if (productPrefab)
 			{
 				TradeItem product = Instantiate(productPrefab);
-				this.GetComponent<PlayerItemHolder>().TakeItem(product);
+				this.GetComponent<ProductHolder>().TakeItem(product);
 			}
 		}
 	}

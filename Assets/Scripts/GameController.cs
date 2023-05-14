@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +7,13 @@ public class GameController : MonoBehaviour
     public List<TradeItem> productList;
     public List<string> productTypeList;
     [SerializeField] Shelve shelvePrefab;
-    [SerializeField] List<Transform> shelvePositions;
-	[SerializeField] Vector2 itemsInPackageRange = new Vector2(1, 3f);
 
     private List<Shelve> shelves;
-    private PackingTable packingTable;
     private ItemLevelController levelController;
 
+	public event EventHandler<List<TradeItem>> OnProductListChange;
 
-    private void Start()
+	private void Start()
     {
         levelController = GetComponent<ItemLevelController>();
 
@@ -23,41 +22,22 @@ public class GameController : MonoBehaviour
 		shelves = new List<Shelve>();
 		for (int i = 0; i < productList.Count; i++)
 		{
-			SpawnShelve(shelvePositions[i], productList[i]);
+			SpawnShelve(productList[i]);
 		}
-		packingTable = (PackingTable)FindObjectOfType(typeof(PackingTable));
-        ShowNextOrder();
 	}
 
-    private void SpawnShelve(Transform spawnPoint, TradeItem product) 
+    private void SpawnShelve(TradeItem product) 
     {
-		Shelve shelve = Instantiate(shelvePrefab, spawnPoint.position, Quaternion.identity);
+		Shelve shelve = Instantiate(shelvePrefab, product.GetShelvePosition.position, Quaternion.identity);
 		shelve.SpawnObjects(product);
 		shelves.Add(shelve);
+		OnProductListChange?.Invoke(this, productList);
 	}
 
-    public void ShowNextOrder()
-    {
-		List<TradeItem> nextPackage = generateNextPackage();
-		packingTable.UploadNextOrder(nextPackage);
-	}
-
-	private List<TradeItem> generateNextPackage()
-	{
-        List<TradeItem> nextPackage = new List<TradeItem>();
-
-        int productQuantity = (int)Random.Range(itemsInPackageRange.x, itemsInPackageRange.y);
-		for (int i = 0; i < productQuantity; i++ ) {
-            int item = (int)Random.Range(0, productList.Count);
-			nextPackage.Add(productList[item]);
-		}
-        return nextPackage;
-	}
-    
     public void AddNextShelve(TradeItem product)
     {
 		productList.Add(product);
-        SpawnShelve(shelvePositions[productList.Count], product);
+        SpawnShelve(product);
 	}
 }
 
@@ -78,7 +58,7 @@ public class GameController : MonoBehaviour
  * 
  * УСТАНОВКА НОВОЙ ПОЛКИ
  * + Написать скрипт для установки
- * - добавить еще три префаба
+ * + добавить еще три префаба
  * 
  * МЕНЮ 
  * + сверстать меню
