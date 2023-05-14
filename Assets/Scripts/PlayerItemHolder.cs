@@ -19,7 +19,7 @@ public class PlayerItemHolder : MonoBehaviour
 		{
 			item.transform.SetParent(transform);
 			item.transform.position = spawnPoint.position;
-			item.transform.rotation = Quaternion.identity;
+			item.transform.rotation = transform.rotation;
 			holdedItem = item;
 			takenItem = item;
 			saver.SaveHoldItem(item);

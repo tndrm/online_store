@@ -91,6 +91,7 @@ MonoBehaviour:
   itemType: packedOrder
   spritePrefab: {fileID: 0}
   cost: 0
+  buyingCost: 0
 --- !u!1 &5803634846400973519
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,8 +183,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5803634846400973519}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_Material: {fileID: 13400000, guid: 8dfda6aa7720efa47b3dcff62f7bc7a7, type: 2}
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
