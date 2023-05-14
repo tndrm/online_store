@@ -23,7 +23,7 @@ public class JoystickPlayer : MonoBehaviour
 
 		rb.velocity = direction * speed * Time.fixedDeltaTime;
 
-		if(rb.velocity.magnitude > 0)
+		if(rb.velocity != Vector3.zero)
 		{
 			animator.SetBool("run", true);
 			transform.rotation = Quaternion.LookRotation(rb.velocity);

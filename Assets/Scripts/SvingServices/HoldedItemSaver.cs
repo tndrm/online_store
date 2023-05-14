@@ -30,8 +30,11 @@ public class HoldedItemSaver : MonoBehaviour
 		{
 			string itemType = PlayerPrefs.GetString("ItemType");
 			TradeItem productPrefab = gameController.productList.Find(item => item.GetItemType == itemType);
-			TradeItem product = Instantiate(productPrefab);
-			this.GetComponent<PlayerItemHolder>().TakeItem(product);
+			if (productPrefab)
+			{
+				TradeItem product = Instantiate(productPrefab);
+				this.GetComponent<PlayerItemHolder>().TakeItem(product);
+			}
 		}
 	}
 }

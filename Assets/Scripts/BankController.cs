@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -9,11 +10,10 @@ public class BankController : MonoBehaviour
 	public float duration = 1f;
 	private float timer;
 	private int currentshowValue;
-	private BankSavingService saver;
 
+	public event EventHandler<int> OnBalanceChange;
 	private void Start()
 	{
-		saver = GetComponent<BankSavingService>();
 		timer = 0f;
 	}
 
@@ -32,14 +32,15 @@ public class BankController : MonoBehaviour
 		lastValue = coinCount;
 		coinCount += coinValue;
 		timer = 0;
-		saver.SaveBalance(coinCount);
+
+		OnBalanceChange?.Invoke(this, coinCount);
 	}
 	public void Reduce(int coinValue)
 	{
 		lastValue = coinCount;
 		coinCount -= coinValue;
 		timer = 0;
-		saver.SaveBalance(coinCount);
+		OnBalanceChange?.Invoke(this, coinCount);
 	}
 
 	public void SetBalance(int balance)

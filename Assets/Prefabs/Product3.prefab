@@ -51,6 +51,7 @@ MonoBehaviour:
   spritePrefab: {fileID: 2202529091272502574, guid: a4afd0986df46674a8cd2254a69153b8,
     type: 3}
   cost: 40
+  buyingCost: 200
 --- !u!33 &1591281722933215855
 MeshFilter:
   m_ObjectHideFlags: 0

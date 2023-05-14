@@ -6386,6 +6386,7 @@ GameObject:
   - component: {fileID: 702763904}
   - component: {fileID: 702763903}
   - component: {fileID: 702763902}
+  - component: {fileID: 702763905}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -6441,7 +6442,7 @@ MonoBehaviour:
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.72
+    m_FadeDuration: 1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -6457,7 +6458,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 702763903}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: da2807e80231d144e9fadca523dd9510, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &702763903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6496,6 +6509,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702763900}
   m_CullTransparentMesh: 1
+--- !u!114 &702763905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702763900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b851c20675bd1439bbd3c8e1ba4f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinText: {fileID: 1055533088}
+  productText: {fileID: 757059307}
 --- !u!1 &727085204
 GameObject:
   m_ObjectHideFlags: 0
@@ -8810,6 +8837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1237408149}
   - component: {fileID: 1237408150}
+  - component: {fileID: 1237408151}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: Untagged
@@ -8844,10 +8872,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b666e1eb2ef89a94fbdf8d7d34d04611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productList:
-  - {fileID: -5735473167334382153, guid: aa19f47c17c7b74479710dc6555a021d, type: 3}
-  - {fileID: -5735473167334382153, guid: 45efc0a90dadbdf46a1a1e0332aaf332, type: 3}
-  - {fileID: -5735473167334382153, guid: affd8a4f8d1c344459c7a91960e20509, type: 3}
+  productList: []
+  productTypeList:
+  - Product1
+  - Product2
   shelvePrefab: {fileID: 3707271697781168139, guid: 06ad80bf1b78bf1499cfc86fa9b1bc2e,
     type: 3}
   shelvePositions:
@@ -8859,6 +8887,23 @@ MonoBehaviour:
   - {fileID: 2524088336234616246}
   - {fileID: 458983520}
   itemsInPackageRange: {x: 1, y: 5}
+--- !u!114 &1237408151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237408148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feb3457adce96c4bb2a578ac9ffc34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allTradeItemsList:
+  - {fileID: -5735473167334382153, guid: aa19f47c17c7b74479710dc6555a021d, type: 3}
+  - {fileID: -5735473167334382153, guid: 45efc0a90dadbdf46a1a1e0332aaf332, type: 3}
+  - {fileID: -5735473167334382153, guid: affd8a4f8d1c344459c7a91960e20509, type: 3}
+  buyingItemPanel: {fileID: 2052634675}
 --- !u!1 &1262954634
 GameObject:
   m_ObjectHideFlags: 0
@@ -9065,7 +9110,7 @@ GameObject:
   - component: {fileID: 1453961000}
   - component: {fileID: 1453960998}
   - component: {fileID: 1453960997}
-  - component: {fileID: 1453960996}
+  - component: {fileID: 1453961001}
   m_Layer: 0
   m_Name: Bin
   m_TagString: Untagged
@@ -9073,20 +9118,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
---- !u!136 &1453960996
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453960995}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1.2653384
-  m_Height: 4.2177944
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1453960997
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9164,6 +9195,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1524d1ebe600de04d998cee2e3cb946c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1453961001
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453960995}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 1.9999999, z: 2.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1506489749
 GameObject:
   m_ObjectHideFlags: 0
@@ -10542,6 +10586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2052634672}
   - component: {fileID: 2052634674}
+  - component: {fileID: 2052634675}
   - component: {fileID: 2052634673}
   m_Layer: 5
   m_Name: New Product Panel
@@ -10549,7 +10594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2052634672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10609,6 +10654,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052634671}
   m_CullTransparentMesh: 1
+--- !u!114 &2052634675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052634671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b851c20675bd1439bbd3c8e1ba4f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinText: {fileID: 1055533088}
+  productText: {fileID: 757059307}
 --- !u!1 &2096254591
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,8 +11,9 @@ public class BankSavingService : MonoBehaviour
 			int balance = PlayerPrefs.GetInt("Balance");
 			bank.SetBalance(balance);
 		}
+		bank.OnBalanceChange += SaveBalance;
 	}
-	public void SaveBalance(int balance)
+	public void SaveBalance(object sender, int balance)
 	{
 		PlayerPrefs.SetInt("Balance", balance);
 		PlayerPrefs.Save();

@@ -4,24 +4,28 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public List<TradeItem> productList;
+    public List<string> productTypeList;
     [SerializeField] Shelve shelvePrefab;
     [SerializeField] List<Transform> shelvePositions;
 	[SerializeField] Vector2 itemsInPackageRange = new Vector2(1, 3f);
+
+    private List<Shelve> shelves;
     private PackingTable packingTable;
+    private ItemLevelController levelController;
 
-
-
-	private void Awake()
-    {
-        for(int i = 0; i<productList.Count; i++)
-        {
-            SpawnShelve(shelvePositions[i], productList[i]);
-		}
-    }
 
     private void Start()
     {
-        packingTable = (PackingTable)FindObjectOfType(typeof(PackingTable));
+        levelController = GetComponent<ItemLevelController>();
+
+        productList = levelController.GetOpenedTradeItems(productTypeList);
+
+		shelves = new List<Shelve>();
+		for (int i = 0; i < productList.Count; i++)
+		{
+			SpawnShelve(shelvePositions[i], productList[i]);
+		}
+		packingTable = (PackingTable)FindObjectOfType(typeof(PackingTable));
         ShowNextOrder();
 	}
 
@@ -29,6 +33,7 @@ public class GameController : MonoBehaviour
     {
 		Shelve shelve = Instantiate(shelvePrefab, spawnPoint.position, Quaternion.identity);
 		shelve.SpawnObjects(product);
+		shelves.Add(shelve);
 	}
 
     public void ShowNextOrder()
@@ -39,7 +44,6 @@ public class GameController : MonoBehaviour
 
 	private List<TradeItem> generateNextPackage()
 	{
-
         List<TradeItem> nextPackage = new List<TradeItem>();
 
         int productQuantity = (int)Random.Range(itemsInPackageRange.x, itemsInPackageRange.y);
@@ -50,10 +54,11 @@ public class GameController : MonoBehaviour
         return nextPackage;
 	}
     
-    public void AddNextShelve()
+    public void AddNextShelve(TradeItem product)
     {
-
-    }
+		productList.Add(product);
+        SpawnShelve(shelvePositions[productList.Count], product);
+	}
 }
 
 /*
@@ -61,9 +66,9 @@ public class GameController : MonoBehaviour
  * 
  * АПГРЕЙД МАГАЗА
  * + создать окно для найма
- * - создать ивент в банке
  * + найти иконки для нового продукта и для нового сотрудника
- * - создать скрипт вызова меню
+ * + создать ивент в банке
+ * + создать скрипт вызова меню
  * 
  * НАЙМ СОТРУДНИКА
  * - Создать префаб нового сотрудника
@@ -72,7 +77,8 @@ public class GameController : MonoBehaviour
  * - Написать скрипт найма
  * 
  * УСТАНОВКА НОВОЙ ПОЛКИ
- * - Написать скрипт для установки
+ * + Написать скрипт для установки
+ * - добавить еще три префаба
  * 
  * МЕНЮ 
  * + сверстать меню
@@ -99,4 +105,5 @@ public class GameController : MonoBehaviour
  * ДОПОЛНИТЕЛЬНО
  * - настройка бабок типо к млн и тд
  * - fix стопка на столе упаковки
+ * - fix берем предмет не подходящий по заказ -> выкидываем -> несем нужный -> бинго! выдает ошибку
 */
