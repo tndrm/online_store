@@ -10,12 +10,12 @@ public class HoldedItemSaver : MonoBehaviour
 		GetLastHoldedItem();
 
 	}
-	public void SaveHoldItem(TradeItem item = null)
+	public void SaveHoldItem(Product item = null)
 	{
 		if (item)
 		{
-			PlayerPrefs.SetString("ItemType", item.GetComponent<TradeItem>().GetItemType);
-			PlayerPrefs.SetInt("ItemCost", item.GetComponent<TradeItem>().GetCost);
+			PlayerPrefs.SetString("ItemType", item.GetComponent<Product>().GetProductType);
+			PlayerPrefs.SetInt("ItemCost", item.GetComponent<Product>().GetCost);
 		}
 		else
 		{
@@ -29,10 +29,10 @@ public class HoldedItemSaver : MonoBehaviour
 		if (PlayerPrefs.HasKey("ItemType"))
 		{
 			string itemType = PlayerPrefs.GetString("ItemType");
-			TradeItem productPrefab = gameController.productList.Find(item => item.GetItemType == itemType);
+			Product productPrefab = gameController.productList.Find(item => item.GetProductType == itemType);
 			if (productPrefab)
 			{
-				TradeItem product = Instantiate(productPrefab);
+				Product product = Instantiate(productPrefab);
 				this.GetComponent<ProductHolder>().TakeItem(product);
 			}
 		}

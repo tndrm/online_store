@@ -5,10 +5,10 @@ public class OrderGenerator : MonoBehaviour
 {
 	[SerializeField] Vector2 itemsInPackageRange = new Vector2(1, 3f);
 
-	private List<TradeItem> productList;
+	private List<Product> productList;
 	private GameController gameController;
 	private PackingTable packingTable;
-	private List<TradeItem> nextPackage;
+	private List<Product> nextPackage;
 
 	private void Start()
 	{
@@ -16,7 +16,7 @@ public class OrderGenerator : MonoBehaviour
 		gameController.OnProductListChange += UpdateProductList;
 		productList = gameController.productList;
 		packingTable = GetComponent<PackingTable>();
-		nextPackage = new List<TradeItem>();
+		nextPackage = new List<Product>();
 		ShowNextOrder();
 
 	}
@@ -25,11 +25,11 @@ public class OrderGenerator : MonoBehaviour
 
 		if (productList.Count != 0)
 		{
-			List<TradeItem> nextPackage = generateNextPackage();
+			List<Product> nextPackage = generateNextPackage();
 			packingTable.UploadNextOrder(nextPackage);
 		}
 	}
-	private List<TradeItem> generateNextPackage()
+	private List<Product> generateNextPackage()
 	{
 		int productQuantity = (int)Random.Range(itemsInPackageRange.x, itemsInPackageRange.y);
 		for (int i = 0; i < productQuantity; i++)
@@ -40,7 +40,7 @@ public class OrderGenerator : MonoBehaviour
 		return nextPackage;
 	}
 
-	private void UpdateProductList(object sender, List<TradeItem> newProductList)
+	private void UpdateProductList(object sender, List<Product> newProductList)
 	{
 		productList = newProductList;
 		if (nextPackage.Count == 0) ShowNextOrder();

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShippingService : MonoBehaviour
 {
-	[SerializeField] TradeItem readyOrder;
+	public Product readyOrder;
 	[SerializeField] ParticleSystem coinsAnimation;
 	private BankController bankController;
 
@@ -17,7 +17,7 @@ public class ShippingService : MonoBehaviour
 
 		if (holder)
 		{
-			TradeItem order = holder.PutItem(readyOrder);
+			Product order = holder.PutItem(readyOrder);
 			if (order)
 			{
 				int cost = order.GetCost;

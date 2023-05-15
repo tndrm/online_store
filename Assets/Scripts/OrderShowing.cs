@@ -28,13 +28,13 @@ public class OrderShowing : MonoBehaviour
 		}
 	}
 
-	public void UpdateItemsListShowing(List<TradeItem> products)
+	public void UpdateItemsListShowing(List<Product> products)
 	{
 		ClearPanel();
 		productsSprites = new List<GameObject>();
-		foreach(TradeItem product in products)
+		foreach(Product product in products)
 		{
-			productsSprites.Add(product.GetItemSprite);
+			productsSprites.Add(product.GetSprite);
 		}
 		DrawPanel();
 	}

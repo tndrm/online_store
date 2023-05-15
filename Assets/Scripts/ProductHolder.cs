@@ -3,16 +3,16 @@ using UnityEngine;
 public class ProductHolder : MonoBehaviour
 {
 	[SerializeField] Transform spawnPoint;
-	public TradeItem holdedItem;
+	public Product holdedItem;
 	private HoldedItemSaver saver;
 
 	private void Awake()
 	{
 		//saver = this.GetComponent<HoldedItemSaver>();
 	}
-	public TradeItem TakeItem(TradeItem item)
+	public Product TakeItem(Product item)
 	{
-		TradeItem takenItem = null;
+		Product takenItem = null;
 
 		if (!holdedItem)
 		{
@@ -25,10 +25,10 @@ public class ProductHolder : MonoBehaviour
 		}
 		return takenItem;
 	}
-	public TradeItem PutItem(TradeItem needItem)
+	public Product PutItem(Product needItem)
 	{
-		TradeItem putedItem = null;
-		if (holdedItem && holdedItem.GetItemType == needItem.GetItemType)
+		Product putedItem = null;
+		if (holdedItem && holdedItem.GetProductType == needItem.GetProductType)
 		{
 			putedItem = holdedItem;
 			holdedItem = null;

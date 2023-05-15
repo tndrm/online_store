@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0581cb0b34ff37c419e10c941a44550e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: Product1
-  spritePrefab: {fileID: 7523702114691281654, guid: e554874db55e2064da80d6c72964cd7e,
+  productType: Product1
+  productSpritePrefab: {fileID: 7523702114691281654, guid: e554874db55e2064da80d6c72964cd7e,
     type: 3}
   cost: 10
-  buyingCost: 100
+  productBuyingCost: 0
   shelvePosition: {fileID: 4643482439067820136, guid: 356c87590fa3fab4b9d2befc629595f6,
     type: 3}
 --- !u!33 &1591281722933215855

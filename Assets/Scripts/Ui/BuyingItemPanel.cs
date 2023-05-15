@@ -9,10 +9,10 @@ public class BuyingItemPanel : MonoBehaviour
 	public event EventHandler OnItemBuy;
 
 
-	public void SetItem(TradeItem product)
+	public void SetItem(Product product)
 	{
 		coinText.text = product.GetBuyingCost.ToString();
-		productText.text = "Do you want to add shelve with " + product.GetItemType + "?";
+		productText.text = "Do you want to add shelve with " + product.GetProductType + "?";
 	}
 
 	public void BuyItem()

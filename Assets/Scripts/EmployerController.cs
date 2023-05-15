@@ -7,7 +7,7 @@ public class EmployerController : MonoBehaviour
 	[SerializeField] ShippingService shippingTable;
 	private ProductHolder productHolder;
 	private NavMeshAgent navMeshAgent;
-	private TradeItem nextNededProduct;
+	private Product nextNededProduct;
 	private Vector3 destinationPoint;
 	void Start()
 	{
@@ -17,29 +17,17 @@ public class EmployerController : MonoBehaviour
 
 	void Update()
 	{
-		/*		if (!levelController.isGamePaused)
-				{
-					playerPosition = player.transform.position;
-
-					transform.LookAt(player.transform);
-
-					navMeshAgent.isStopped = !navMeshAgent.Raycast(playerPosition, out hit);
-				}*/
-		Debug.Log(navMeshAgent.velocity.magnitude);
 		float velocity = navMeshAgent.velocity.magnitude;
-			if (destinationPoint == Vector3.zero || navMeshAgent.remainingDistance<1 || velocity < 1)
+		if (destinationPoint == Vector3.zero || navMeshAgent.remainingDistance < 1 || velocity < 1)
 		{
 			SetDestinationPoint();
 		}
 		navMeshAgent.destination = destinationPoint;
-
-
-
 	}
 
 	private void SetDestinationPoint()
 	{
-		TradeItem holdedProduct = productHolder.holdedItem;
+		Product holdedProduct = productHolder.holdedItem;
 		if (holdedProduct == null)
 		{
 			nextNededProduct = packingTable.GetNextNededItem();
@@ -47,7 +35,7 @@ public class EmployerController : MonoBehaviour
 		}
 		else if (holdedProduct != null)
 		{
-			destinationPoint = holdedProduct.GetItemType != "packedOrder" ? packingTable.transform.position : shippingTable.transform.position;
+			destinationPoint = holdedProduct.GetProductType != shippingTable.readyOrder.GetProductType ? packingTable.transform.position : shippingTable.transform.position;
 		}
 	}
 }

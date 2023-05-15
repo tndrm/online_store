@@ -9285,8 +9285,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1237408149}
-  - component: {fileID: 1237408150}
   - component: {fileID: 1237408151}
+  - component: {fileID: 1237408150}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: Untagged
@@ -9325,7 +9325,6 @@ MonoBehaviour:
   productTypeList:
   - Product1
   - Product2
-  - Product3
   shelvePrefab: {fileID: 3707271697781168139, guid: 06ad80bf1b78bf1499cfc86fa9b1bc2e,
     type: 3}
 --- !u!114 &1237408151
@@ -9340,10 +9339,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5feb3457adce96c4bb2a578ac9ffc34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allTradeItemsList:
+  allProductsList:
   - {fileID: -5735473167334382153, guid: aa19f47c17c7b74479710dc6555a021d, type: 3}
   - {fileID: -5735473167334382153, guid: 45efc0a90dadbdf46a1a1e0332aaf332, type: 3}
   - {fileID: -5735473167334382153, guid: affd8a4f8d1c344459c7a91960e20509, type: 3}
+  - {fileID: -5735473167334382153, guid: 5db54893bfb8c2c4582db4985eee1c6b, type: 3}
+  - {fileID: -5735473167334382153, guid: 73b417dfdbaf7044a8c56911c8a80f98, type: 3}
+  - {fileID: -5735473167334382153, guid: 3df2869c43b688b48be7d522c5a80df1, type: 3}
   buyingItemPanel: {fileID: 2052634675}
 --- !u!1 &1245687027
 GameObject:

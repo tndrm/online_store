@@ -7,17 +7,17 @@ using UnityEngine;
 public class PackingTable : MonoBehaviour
 {
 	[SerializeField] Transform productsStackPoint;
-	[SerializeField] TradeItem packedOrderPrefab;
-	public List<TradeItem> nededItemsList;
-	private List<TradeItem> readyOrders;
-	private List<TradeItem> readyForPaking;
+	[SerializeField] Product packedOrderPrefab;
+	public List<Product> nededItemsList;
+	private List<Product> readyOrders;
+	private List<Product> readyForPaking;
 	public OrderShowing orderShowing;
 	private OrderGenerator orderGenerator;
 
 	void Start()
 	{
-		readyOrders = new List<TradeItem>();
-		readyForPaking = new List<TradeItem>();
+		readyOrders = new List<Product>();
+		readyForPaking = new List<Product>();
 		orderGenerator = GetComponent<OrderGenerator>();
 
 	}
@@ -29,7 +29,7 @@ public class PackingTable : MonoBehaviour
 		{
 			for (int i = 0; i < nededItemsList.Count; i++) 
 			{
-				TradeItem puttedItem = holder.PutItem(nededItemsList[i]);
+				Product puttedItem = holder.PutItem(nededItemsList[i]);
 				if (puttedItem) PutOnTable(puttedItem);
 			}
 			if (readyOrders.Count > 0)
@@ -48,13 +48,13 @@ public class PackingTable : MonoBehaviour
 		}
 	}
 
-	private void PutOnTable(TradeItem item)
+	private void PutOnTable(Product item)
 	{
 		item.transform.SetParent(transform, false);
 		item.transform.position = GetPutPoint(item.gameObject);
 		item.transform.rotation = Quaternion.identity;
 		readyForPaking.Add(item);
-		int index = nededItemsList.FindLastIndex(nededItem => nededItem.GetItemType == item.GetItemType);
+		int index = nededItemsList.FindLastIndex(nededItem => nededItem.GetProductType == item.GetProductType);
 		nededItemsList.RemoveAt(index);
 	}
 
@@ -73,13 +73,13 @@ public class PackingTable : MonoBehaviour
 		Vector3 putPoint = productsStackPoint.position;
 		if (readyForPaking.Any())
 		{
-			TradeItem lastProductOnTable = readyForPaking.Last();
+			Product lastProductOnTable = readyForPaking.Last();
 			Bounds lastItemBounds = lastProductOnTable.GetComponent<Renderer>().bounds;
 			putPoint.y = Math.Max( putPoint.y, lastItemBounds.max.y );
 		}
 		if (readyOrders.Any())
 		{
-			TradeItem lastOrderOnTable = readyOrders.Last();
+			Product lastOrderOnTable = readyOrders.Last();
 			Bounds lastItemBounds = lastOrderOnTable.GetComponent<Renderer>().bounds;
 			putPoint.y = Math.Max(putPoint.y, lastItemBounds.max.y);
 		}
@@ -89,18 +89,18 @@ public class PackingTable : MonoBehaviour
 	private void PackOrder()
 	{
 		int totalCost = 0;
-		foreach (TradeItem product in readyForPaking)
+		foreach (Product product in readyForPaking)
 		{
 			totalCost += product.GetCost;
 			Destroy(product.gameObject);
 		}
-		TradeItem package = Instantiate(packedOrderPrefab, GetPutPoint(packedOrderPrefab.gameObject), Quaternion.identity, transform);
+		Product package = Instantiate(packedOrderPrefab, GetPutPoint(packedOrderPrefab.gameObject), Quaternion.identity, transform);
 		package.SetCost(totalCost);
 		readyOrders.Add(package);
 		readyForPaking.Clear();
 	}
 
-	public void UploadNextOrder(List<TradeItem> newOrderItems)
+	public void UploadNextOrder(List<Product> newOrderItems)
 	{
 		nededItemsList = newOrderItems;
 		UpdateNededListShowing();
@@ -111,7 +111,7 @@ public class PackingTable : MonoBehaviour
 		orderShowing.UpdateItemsListShowing(nededItemsList);
 	}
 
-	public TradeItem GetNextNededItem()
+	public Product GetNextNededItem()
 	{
 		return nededItemsList[0];
 	}

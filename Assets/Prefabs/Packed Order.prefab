@@ -88,10 +88,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0581cb0b34ff37c419e10c941a44550e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: packedOrder
-  spritePrefab: {fileID: 0}
+  productType: PackedOrder
+  productSpritePrefab: {fileID: 0}
   cost: 0
-  buyingCost: 0
+  productBuyingCost: 0
+  shelvePosition: {fileID: 0}
 --- !u!1 &5803634846400973519
 GameObject:
   m_ObjectHideFlags: 0

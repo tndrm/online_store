@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public List<TradeItem> productList;
+    public List<Product> productList;
     public List<string> productTypeList;
     [SerializeField] Shelve shelvePrefab;
 
     private List<Shelve> shelves;
-    private ItemLevelController levelController;
+    private LevelController levelController;
 
-	public event EventHandler<List<TradeItem>> OnProductListChange;
+	public event EventHandler<List<Product>> OnProductListChange;
 
 	private void Start()
     {
-        levelController = GetComponent<ItemLevelController>();
+        levelController = GetComponent<LevelController>();
 
         productList = levelController.GetOpenedTradeItems(productTypeList);
 
@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-    private void SpawnShelve(TradeItem product) 
+    private void SpawnShelve(Product product) 
     {
 		Shelve shelve = Instantiate(shelvePrefab, product.GetShelvePosition.position, Quaternion.identity);
 		shelve.SpawnObjects(product);
@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
 		OnProductListChange?.Invoke(this, productList);
 	}
 
-    public void AddNextShelve(TradeItem product)
+    public void AddNextShelve(Product product)
     {
 		productList.Add(product);
         SpawnShelve(product);
@@ -51,9 +51,9 @@ public class GameController : MonoBehaviour
  * + создать скрипт вызова меню
  * 
  * НАЙМ СОТРУДНИКА
- * - Создать префаб нового сотрудника
- * - Написать скрипт для стола сотрудника
- * - Написать скрипт сбора заказа
+ * + Создать префаб нового сотрудника
+ * + Написать скрипт для стола сотрудника
+ * + Написать скрипт сбора заказа
  * - Написать скрипт найма
  * 
  * УСТАНОВКА НОВОЙ ПОЛКИ
@@ -85,5 +85,7 @@ public class GameController : MonoBehaviour
  * ДОПОЛНИТЕЛЬНО
  * - настройка бабок типо к млн и тд
  * - fix стопка на столе упаковки
+ * - fix сотрудник берет не тот заказ
+ * - сотрудник может выкинуть
  * - fix берем предмет не подходящий по заказ -> выкидываем -> несем нужный -> бинго! выдает ошибку
 */
