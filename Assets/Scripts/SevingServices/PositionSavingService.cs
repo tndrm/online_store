@@ -28,15 +28,15 @@ public class PositionSavingService : MonoBehaviour
 		}
 	}
 
-	private void OnDestroy()
-	{
-		SavePos(lastSavedPosition);
-	}
-
 	private void SavePos(Vector3 position)
 	{
 		PlayerPrefs.SetFloat("LastSavedPositionX", position.x);
 		PlayerPrefs.SetFloat("LastSavedPositionZ", position.z);
 		PlayerPrefs.Save();
+	}
+
+	private void OnDestroy()
+	{
+		SavePos(lastSavedPosition);
 	}
 }

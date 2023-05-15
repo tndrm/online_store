@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class EmployerController : MonoBehaviour
 {
 	[SerializeField] PackingTable packingTable;
-	[SerializeField] ShippingService shippingTable;
+	private ShippingService shippingTable;
 	private ProductHolder productHolder;
 	private NavMeshAgent navMeshAgent;
 	private Product nextNededProduct;
@@ -13,6 +13,7 @@ public class EmployerController : MonoBehaviour
 	{
 		navMeshAgent = GetComponent<NavMeshAgent>();
 		productHolder = GetComponent<ProductHolder>();
+		shippingTable = (ShippingService)FindObjectOfType(typeof(ShippingService));
 	}
 
 	void Update()

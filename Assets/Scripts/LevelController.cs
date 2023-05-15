@@ -7,11 +7,16 @@ public class LevelController : MonoBehaviour
 {
 	[SerializeField] List<Product> allProductsList;
 	[SerializeField] BuyingItemPanel buyingItemPanel;
+	[SerializeField] HirePanel hirePanel;
+	[SerializeField] GameObject employerPrefab;
+	[SerializeField] int hireEmployerCost;
+	
 	private GameController gameController;
  	private List<Product> upgradeProductList;
 	private BankController bank;
 	private int nextProductToBuyCost = 0;
 	private Product nextItepToBuy;
+	private bool isEmployerHired = false;
 	private void Start()
 	{
 		bank = (BankController)FindObjectOfType(typeof(BankController));
@@ -19,14 +24,17 @@ public class LevelController : MonoBehaviour
 
 		bank.OnBalanceChange += Upgrade;
 		buyingItemPanel.OnItemBuy += BuyNextShelve;
+		hirePanel.OnHireEmployer += HireEmployer;
 	}
 	private void Upgrade(object sender, int balance)
 	{
-		Debug.Log(0 + upgradeProductList.ToString());
 		if (upgradeProductList.Count>0 && CheckIsEnothForUpgrade(balance))
 		{
-			Debug.Log(upgradeProductList);
 			ShowBuyingItemPanel();
+		}
+		if(!isEmployerHired && CheckIsEnothForHire(balance))
+		{
+			ShowHireItemPanel();
 		}
 	}
 
@@ -40,22 +48,33 @@ public class LevelController : MonoBehaviour
 		FindNextItemToBuy();
 	}
 
+	private void HireEmployer(object sender, EventArgs e)
+	{
+		Instantiate(employerPrefab);
+		isEmployerHired = true;
+	}
+
 	private void ShowBuyingItemPanel()
 	{
 		buyingItemPanel.gameObject.SetActive(true);
 		buyingItemPanel.SetItem(nextItepToBuy);
-
+	}
+	private void ShowHireItemPanel()
+	{
+		hirePanel.gameObject.SetActive(true);
+		hirePanel.SetItem(hireEmployerCost);
 	}
 	private bool CheckIsEnothForUpgrade(int balance)
 	{
-		Debug.Log(1);
 		if (nextProductToBuyCost == 0)
 		{
-			Debug.Log(2);
-
 			FindNextItemToBuy();
 		}
-		return nextProductToBuyCost <= balance;
+		return balance >= nextProductToBuyCost;
+	}
+	private bool CheckIsEnothForHire(int balance)
+	{
+		return balance >= hireEmployerCost;
 	}
 
 
@@ -63,8 +82,6 @@ public class LevelController : MonoBehaviour
 	{
 		foreach(Product product in upgradeProductList)
 		{
-			Debug.Log(3 + product.GetProductType);
-
 			if (nextProductToBuyCost >= product.GetBuyingCost || nextProductToBuyCost == 0)
 			{
 				nextProductToBuyCost = product.GetBuyingCost;

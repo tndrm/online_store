@@ -50,7 +50,7 @@ MonoBehaviour:
   productType: Product1
   productSpritePrefab: {fileID: 7523702114691281654, guid: e554874db55e2064da80d6c72964cd7e,
     type: 3}
-  cost: 10
+  cost: 100
   productBuyingCost: 0
   shelvePosition: {fileID: 4643482439067820136, guid: 356c87590fa3fab4b9d2befc629595f6,
     type: 3}
