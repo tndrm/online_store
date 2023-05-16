@@ -5,9 +5,14 @@ public class ProductHolder : MonoBehaviour
 	[SerializeField] Transform spawnPoint;
 	public Product holdedItem;
 	private HoldedItemSaver saver;
+	public bool isMainPlayer = true;
 
 	private void Awake()
 	{
+		if (TryGetComponent<EmployerController>(out EmployerController e))
+		{
+			isMainPlayer = false;
+		}
 		//saver = this.GetComponent<HoldedItemSaver>();
 	}
 	public Product TakeItem(Product item)

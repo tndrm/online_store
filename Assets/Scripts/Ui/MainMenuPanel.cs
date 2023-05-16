@@ -1,14 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class MainMenuPanel : MonoBehaviour
 {
 	private ProgressSavingService progressSavingService;
-	private bool isSoundOn;
+	public Sprite soundOnSprite;
+	public Sprite soundOffSprite;
+	public Image soundImage;
+	private bool isSoundOn = true;
 
 	private void Start()
 	{
-		progressSavingService = (ProgressSavingService)FindObjectOfType(typeof(ProgressSavingService));
+		UpdateSoundSprite();
 
+		progressSavingService = (ProgressSavingService)FindObjectOfType(typeof(ProgressSavingService));
 	}
 	public void ClearProgress()
 	{
@@ -18,5 +24,11 @@ public class MainMenuPanel : MonoBehaviour
 	public void ToggleSound()
 	{
 		isSoundOn = !isSoundOn;
+		AudioListener.volume = isSoundOn ? 1 : 0;
+		UpdateSoundSprite();
+	}
+	private void UpdateSoundSprite()
+	{
+		soundImage.sprite = isSoundOn ? soundOnSprite : soundOffSprite;
 	}
 }

@@ -30,6 +30,7 @@ public class Shelve : MonoBehaviour
 		{
 			InstantiateNextProduct();
 			Product takenItem = holder.TakeItem(itemToTake);
+			if(takenItem && holder.isMainPlayer) GetComponent<AudioSource>().Play();
 		}
 	}
 

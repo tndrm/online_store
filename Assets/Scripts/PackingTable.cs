@@ -8,7 +8,11 @@ public class PackingTable : MonoBehaviour
 {
 	[SerializeField] Transform productsStackPoint;
 	[SerializeField] Product packedOrderPrefab;
+	[SerializeField] AudioClip putSound;
+	[SerializeField] AudioClip pakeOrderSound;
+	[SerializeField] AudioClip takeOrderSound;
 	public List<Product> nededItemsList;
+	private AudioSource audioSource;
 	private List<Product> readyOrders;
 	private List<Product> readyForPaking;
 	public OrderShowing orderShowing;
@@ -18,6 +22,7 @@ public class PackingTable : MonoBehaviour
 	{
 		readyOrders = new List<Product>();
 		readyForPaking = new List<Product>();
+		audioSource = GetComponent<AudioSource>();
 		orderGenerator = GetComponent<OrderGenerator>();
 
 	}
@@ -30,11 +35,17 @@ public class PackingTable : MonoBehaviour
 			for (int i = 0; i < nededItemsList.Count; i++) 
 			{
 				Product puttedItem = holder.PutItem(nededItemsList[i]);
-				if (puttedItem) PutOnTable(puttedItem);
+				if (puttedItem)
+				{
+					PutOnTable(puttedItem);
+					if(holder.isMainPlayer) audioSource.PlayOneShot(putSound);
+				}
 			}
 			if (readyOrders.Count > 0)
 			{
-				readyOrders.Remove(holder.TakeItem(readyOrders.Last()));
+				Product packedOrder = holder.TakeItem(readyOrders.Last());
+				if (holder.isMainPlayer) audioSource.PlayOneShot(takeOrderSound);
+				readyOrders.Remove(packedOrder);
 			}
 			if (nededItemsList.Count > 0)
 			{
@@ -43,6 +54,7 @@ public class PackingTable : MonoBehaviour
 			else
 			{
 				PackOrder();
+				if (holder.isMainPlayer) audioSource.PlayOneShot(pakeOrderSound);
 				orderGenerator.ShowNextOrder();
 			}
 		}

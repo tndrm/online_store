@@ -7,6 +7,7 @@ public class Bin : MonoBehaviour
 		ProductHolder holder = other.gameObject.GetComponent<ProductHolder>();
 		if (holder)
 		{
+			if(holder.isMainPlayer) GetComponent<AudioSource>().Play();
 			holder.DiscardHoldedItem();
 		}
 	}
