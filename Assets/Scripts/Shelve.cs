@@ -18,7 +18,7 @@ public class Shelve : MonoBehaviour
 		{
 			for (int j = 0; j < gridDimensions.y; j++)
 			{
-				Product newObj = Instantiate(tradeItem, spawnPosition + new Vector3(i * spacing, 0, j * spacing), Quaternion.identity, transform);
+				Instantiate(tradeItem, spawnPosition + new Vector3(i * spacing, 0, j * spacing), Quaternion.identity, transform);
 			}
 		}
 	}

@@ -23,7 +23,7 @@ public class OrderShowing : MonoBehaviour
 		for (int i = 0; i < productsSprites.Count; i++)
 		{
 			Vector3 currentSpritePosition = new Vector3(previousPosition.x + distanceBetweenSprites, firstSpritePosition.y, firstSpritePosition.z);
-			shownSprites.Add(Instantiate(productsSprites[i], currentSpritePosition, Quaternion.identity, spritePanel.transform));
+			shownSprites.Add(Instantiate(productsSprites[i], currentSpritePosition, spritePanel.transform.rotation, spritePanel.transform));
 			previousPosition = currentSpritePosition;
 		}
 	}
