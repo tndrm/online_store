@@ -9,16 +9,24 @@ public class Shelve : MonoBehaviour
 	private Product itemToTake;
 
 
-	public void SpawnObjects(Product tradeItem)
+	private void Start()
 	{
-		productPrefab = tradeItem;
+		SpawnObjects();
+	}
+
+	public void SetSettings(Product product)
+	{
+		productPrefab = product;
+	}
+	private void SpawnObjects()
+	{
 		Vector3 center = shalve.transform.position;
 		Vector3 spawnPosition = center - new Vector3((gridDimensions.x - 1) * spacing / 2, -.2f, (gridDimensions.y - 1) * spacing / 2);
 		for (int i = 0; i < gridDimensions.x; i++)
 		{
 			for (int j = 0; j < gridDimensions.y; j++)
 			{
-				Instantiate(tradeItem, spawnPosition + new Vector3(i * spacing, 0, j * spacing), Quaternion.identity, transform);
+				Instantiate(productPrefab, spawnPosition + new Vector3(i * spacing, 0, j * spacing), Quaternion.identity, transform);
 			}
 		}
 	}
@@ -37,7 +45,6 @@ public class Shelve : MonoBehaviour
 	private void InstantiateNextProduct()
 	{
 		if (!itemToTake || itemToTake.transform.parent != gameObject)
-
 			itemToTake = Instantiate(productPrefab, transform.position, Quaternion.identity, transform);
 	}
 }

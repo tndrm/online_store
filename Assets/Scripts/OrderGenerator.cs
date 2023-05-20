@@ -14,7 +14,7 @@ public class OrderGenerator : MonoBehaviour
 	{
 		gameController = (GameController)FindObjectOfType(typeof(GameController));
 		gameController.OnProductListChange += UpdateProductList;
-		productList = gameController.productList;
+		productList = gameController.openedProductList;
 		packingTable = GetComponent<PackingTable>();
 		nextPackage = new List<Product>();
 		ShowNextOrder();

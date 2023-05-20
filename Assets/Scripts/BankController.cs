@@ -5,7 +5,7 @@ using UnityEngine;
 public class BankController : MonoBehaviour
 {
 	public TMP_Text coinText;
-	private int coinCount = 0;
+	private int coinBalance = 0;
 	private int lastValue = 0;
 	public float duration = 1f;
 	private float timer;
@@ -21,30 +21,41 @@ public class BankController : MonoBehaviour
 	{
 		timer += Time.deltaTime;
 
-		if (timer < duration || currentshowValue != coinCount)
+		if (timer < duration || currentshowValue != coinBalance)
 		{
-			currentshowValue = (int)Mathf.Round(Mathf.Lerp(lastValue, coinCount, timer / duration));
+			currentshowValue = (int)Mathf.Round(Mathf.Lerp(lastValue, coinBalance, timer / duration));
 			coinText.text = currentshowValue.ToString();
 		}
 	}
 	public void Increace(int coinValue)
 	{
-		lastValue = coinCount;
-		coinCount += coinValue;
+		lastValue = coinBalance;
+		coinBalance += coinValue;
 		timer = 0;
 
-		OnBalanceChange?.Invoke(this, coinCount);
+		OnBalanceChange?.Invoke(this, coinBalance);
 	}
-	public void Reduce(int coinValue)
+	public int Reduce(int coinValue)
 	{
-		lastValue = coinCount;
-		coinCount -= coinValue;
+		lastValue = coinBalance;
+		int reduced = 0;
+		if (coinBalance > coinValue)
+		{
+			coinBalance -= coinValue;
+			reduced = coinValue;
+		}
+		else
+		{
+			reduced = coinBalance;
+			coinBalance = 0;
+		}
 		timer = 0;
-		OnBalanceChange?.Invoke(this, coinCount);
+		OnBalanceChange?.Invoke(this, coinBalance);
+		return reduced;
 	}
 
 	public void SetBalance(int balance)
 	{
-		coinCount = balance;
+		coinBalance = balance;
 	}
 }

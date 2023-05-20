@@ -29,7 +29,7 @@ public class HoldedItemSaver : MonoBehaviour
 		if (PlayerPrefs.HasKey("ItemType"))
 		{
 			string itemType = PlayerPrefs.GetString("ItemType");
-			Product productPrefab = gameController.productList.Find(item => item.GetProductType == itemType);
+			Product productPrefab = gameController.openedProductList.Find(item => item.GetProductType == itemType);
 			if (productPrefab)
 			{
 				Product product = Instantiate(productPrefab);
