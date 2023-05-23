@@ -6399,17 +6399,17 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.91194963, g: 0.9412998, b: 1, a: 1}
-  m_Intensity: 17.2
+  m_Intensity: 16.22
   m_Range: 28.1
   m_SpotAngle: 81
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.75
-    m_Bias: 0.05
+    m_Strength: 0.84
+    m_Bias: 0
     m_NormalBias: 0.4
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
@@ -6441,7 +6441,7 @@ Light:
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 3431
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -7881,8 +7881,6 @@ MonoBehaviour:
   - Product2
   - Product3
   - Product4
-  - Product5
-  - Product6
   openedProductList: []
 --- !u!114 &1237408152
 MonoBehaviour:
@@ -8230,7 +8228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spritePanel: {fileID: 299882377}
-  distanceBetweenSprites: 200
+  distanceBetweenSprites: 100
 --- !u!114 &1535323251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8427,7 +8425,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: be7cee5ab6fbe2c48a4097d47e7a317c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8780,7 +8778,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: be7cee5ab6fbe2c48a4097d47e7a317c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9089,7 +9087,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: be7cee5ab6fbe2c48a4097d47e7a317c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9510,7 +9508,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: be7cee5ab6fbe2c48a4097d47e7a317c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
