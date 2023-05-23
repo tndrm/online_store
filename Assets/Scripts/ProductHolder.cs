@@ -6,11 +6,13 @@ public class ProductHolder : MonoBehaviour
 	public Product holdedItem;
 	private HoldedItemSaver saver;
 	public bool isMainPlayer = true;
+	private EmployerController employerController = null;
 
 	private void Awake()
 	{
 		if (TryGetComponent<EmployerController>(out EmployerController e))
 		{
+			employerController = e;
 			isMainPlayer = false;
 		}
 		//saver = this.GetComponent<HoldedItemSaver>();
@@ -18,8 +20,8 @@ public class ProductHolder : MonoBehaviour
 	public Product TakeItem(Product item)
 	{
 		Product takenItem = null;
-
-		if (!holdedItem)
+		bool isNeededProduct = IsNeededProduct(item);
+		if (!holdedItem && isNeededProduct)
 		{
 			item.transform.SetParent(transform);
 			item.transform.position = spawnPoint.position;
@@ -29,6 +31,12 @@ public class ProductHolder : MonoBehaviour
 			//saver.SaveHoldItem(item);
 		}
 		return takenItem;
+	}
+
+	private bool IsNeededProduct(Product item)
+	{
+		bool isNeed = employerController != null ? employerController.IsNeedToTake(item) : true;
+		return isNeed;
 	}
 	public Product PutItem(Product needItem)
 	{

@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
 	public List<Product> openedProductList;
 
 	private ShelvePlaceholder currentPlaceholder;
-	private bool isEmployerHired = false;
+	private bool isEmployerHired = true;
 
 	private Product nextItemToBuy;
 	private List<Shelve> shelves;
@@ -128,23 +128,15 @@ public class GameController : MonoBehaviour
  * - сохранение данных плейсхолдера
  * 
  * 
- * ѕЋ≈…—’ќЋƒ≈–
- * - установка следующего плейсхолдера
- * - установка полки на месте плейсхолдера
- * - добавить звук плейсхолдеру и перерождению плейсхолдера
- * 
  * “–≈Ѕќ¬јЌ»я   —Ћ≈ƒ”ёў≈ћ” јѕƒ≈…“”
  * - сотрудник может выкинуть
- * - fix сотрудник берет не тот заказ
- * - отдалить камеру
- * - увеличить монеты
- * 
+ * - сделать паллеты
  * - сделать €рче
  * 
  * ѕќћ≈Ќя“№  ”Ѕџ Ќј »√–”Ў »
  * - найти 6 моделек
- * - найти спрайты к ним
- * - добавить в сцену
+ * - заменить модельки
+ * - создать спрайты к ним
  * 
  * ƒќѕќЋЌ»“≈Ћ№Ќќ
  * - настройка бабок типо к млн и тд

@@ -9,11 +9,13 @@ public class EmployerController : MonoBehaviour
 	private NavMeshAgent navMeshAgent;
 	private Product nextNededProduct;
 	private Vector3 destinationPoint;
+	private string readyOrderType;
 	void Start()
 	{
 		navMeshAgent = GetComponent<NavMeshAgent>();
 		productHolder = GetComponent<ProductHolder>();
 		shippingTable = (ShippingService)FindObjectOfType(typeof(ShippingService));
+		readyOrderType = shippingTable.readyOrder.GetProductType;
 	}
 
 	void Update()
@@ -26,6 +28,13 @@ public class EmployerController : MonoBehaviour
 		navMeshAgent.destination = destinationPoint;
 	}
 
+	public bool IsNeedToTake(Product product)
+	{
+		bool isNeed = nextNededProduct && product.GetProductType == nextNededProduct.GetProductType;
+		bool isReady = product.GetProductType == readyOrderType;
+		return isNeed || isReady;
+	}
+
 	private void SetDestinationPoint()
 	{
 		Product holdedProduct = productHolder.holdedItem;
@@ -36,7 +45,7 @@ public class EmployerController : MonoBehaviour
 		}
 		else if (holdedProduct != null)
 		{
-			destinationPoint = holdedProduct.GetProductType != shippingTable.readyOrder.GetProductType ? packingTable.transform.position : shippingTable.transform.position;
+			destinationPoint = holdedProduct.GetProductType != readyOrderType ? packingTable.transform.position : shippingTable.transform.position;
 		}
 	}
 }
