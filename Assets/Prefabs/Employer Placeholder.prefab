@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11310fb35c7910941adaaf7a82d28cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
-  sliderText: {fileID: 0}
+  slider: {fileID: 52591172558819667}
+  sliderText: {fileID: 1527480463146209989}
   byyingSound: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
   payingCoinsSound: {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}
 --- !u!65 &5363983617304400362

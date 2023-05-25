@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
 	public List<Product> openedProductList;
 
 	private ShelvePlaceholder currentPlaceholder;
-	private bool isEmployerHired = true;
+	private bool isEmployerHired = false;
 
 	private Product nextItemToBuy;
 	private List<Shelve> shelves;
@@ -139,4 +139,5 @@ public class GameController : MonoBehaviour
  * - fix берем предмет не подходящий по заказ -> выкидываем -> несем нужный -> бинго! выдает ошибку
  * - перекинуть спрайты в префаб
  * - разбить префаб сотрудника
+ * - перенести скрипт отрисовыватель спрайтов
 */
