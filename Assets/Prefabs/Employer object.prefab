@@ -766,8 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17861543aae0b524fa23cd2ed43bb35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spritePanel: {fileID: 2046012213687085516}
-  distanceBetweenSprites: 0.3
+  spritePanel: {fileID: 2046012213687085513}
 --- !u!114 &2046012213488115147
 MonoBehaviour:
   m_ObjectHideFlags: 0
