@@ -12,6 +12,7 @@ public class Shelve : MonoBehaviour
 	private void Start()
 	{
 		SpawnObjects();
+		InstantiateNextProduct();
 	}
 
 	public void SetSettings(Product product)
@@ -44,7 +45,8 @@ public class Shelve : MonoBehaviour
 
 	private void InstantiateNextProduct()
 	{
-		if (!itemToTake || itemToTake.transform.parent != gameObject)
+		if (itemToTake == null || itemToTake.transform.parent != transform) {
 			itemToTake = Instantiate(productPrefab, transform.position, Quaternion.identity, transform);
+		}
 	}
 }

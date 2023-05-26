@@ -11,6 +11,7 @@ public class PackingTable : MonoBehaviour
 	[SerializeField] AudioClip putSound;
 	[SerializeField] AudioClip pakeOrderSound;
 	[SerializeField] AudioClip takeOrderSound;
+	[SerializeField] ProductHolder tableOwner;
 	public List<Product> nededItemsList;
 	private AudioSource audioSource;
 	private List<Product> readyOrders;
@@ -30,7 +31,7 @@ public class PackingTable : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		ProductHolder holder = other.gameObject.GetComponent<ProductHolder>();
-		if (holder)
+		if (holder&& holder == tableOwner)
 		{
 			for (int i = 0; i < nededItemsList.Count; i++) 
 			{
