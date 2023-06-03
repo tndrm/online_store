@@ -3246,7 +3246,7 @@ GameObject:
   - component: {fileID: 3855161854352926562}
   - component: {fileID: 8695807713919372915}
   m_Layer: 0
-  m_Name: Product2
+  m_Name: car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3281,10 +3281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0581cb0b34ff37c419e10c941a44550e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productType: Product2
+  productType: car
   productSpritePrefab: {fileID: 6233313334228720778}
-  cost: 20
-  productBuyingCost: 0
+  cost: 50
+  productBuyingCost: 500
   shelvePosition: {fileID: 2682493914891751729, guid: 082de37ebb8331a43b52d8bcd079938e,
     type: 3}
 --- !u!65 &3855161854352926562

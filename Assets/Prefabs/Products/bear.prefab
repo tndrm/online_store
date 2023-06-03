@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 8134921277167872289}
   - component: {fileID: 3855161854352926562}
   m_Layer: 0
-  m_Name: Product4
+  m_Name: bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,10 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0581cb0b34ff37c419e10c941a44550e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productType: Product4
+  productType: bear
   productSpritePrefab: {fileID: 3360600871143969936}
-  cost: 40
-  productBuyingCost: 400
+  cost: 60
+  productBuyingCost: 600
   shelvePosition: {fileID: 6334339567802833475, guid: 01fb37abee356434e9417ae63187ef79,
     type: 3}
 --- !u!23 &8134921277167872289

@@ -15,7 +15,6 @@ public class GameController : MonoBehaviour
 	[SerializeField] EmployerPlaceholder ePlaceholderPrefab;
 
 	[SerializeField] ShelvePlaceholder placeholderPrefab;
-	[SerializeField] List<string> productTypes;
 
 	public List<Product> openedProductList;
 
@@ -26,10 +25,12 @@ public class GameController : MonoBehaviour
 	private List<Shelve> shelves;
 	private List<Product> upgradeProductList;
 	private EmployerPlaceholder employerPlaceholder;
-	private int employerCost;
+
+	private ProgressSavingService progressSavingService;
 
 
 	public event EventHandler<List<Product>> OnProductListChange;
+	public event EventHandler OnEmployerHired;
 
 	private void Start()
 	{
@@ -37,17 +38,12 @@ public class GameController : MonoBehaviour
 		upgradeProductList = new List<Product>();
 
 		shelves = new List<Shelve>();
-		foreach (Product product in allProductsList)
-		{
-			if (productTypes.Any(t => product.GetProductType == t))
-			{
-				AddNextShelve(product);
-			}
-			else
-			{
-				upgradeProductList.Add(product);
-			}
-		}
+
+		progressSavingService = GetComponent<ProgressSavingService>();
+
+		isEmployerHired = progressSavingService.IsEmloyerHired();
+
+		ShowOpenedShelves();
 		ShowShelvePlaceholder();
 
 		if (isEmployerHired)
@@ -59,6 +55,47 @@ public class GameController : MonoBehaviour
 			ShowEmployerPlaceholder();
 		}
 
+	}
+
+	private void ShowOpenedShelves()
+	{
+		List<string> openedProductTypes = progressSavingService.GetOpenedShelves();
+		if (openedProductTypes.Count > 0)
+		{
+			foreach (Product product in allProductsList)
+			{
+				if (openedProductTypes.Any(t => product.GetProductType == t))
+				{
+					AddNextShelve(product);
+				}
+				else
+				{
+					upgradeProductList.Add(product);
+				}
+			}
+		}
+		else
+		{
+			 FindFreeProducts();
+
+		}
+
+
+	}
+
+	private void FindFreeProducts()
+	{
+		foreach(Product product in allProductsList)
+		{
+			if (product.GetBuyingCost == 0)
+			{
+				AddNextShelve(product);
+			}
+			else
+			{
+				upgradeProductList.Add(product);
+			}
+		}
 	}
 
 	public void AddNextShelve(Product product)
@@ -90,6 +127,7 @@ public class GameController : MonoBehaviour
 	{
 
 		employerPlaceholder = Instantiate(ePlaceholderPrefab, employerPosition.position, Quaternion.identity);
+		int employerCost = employerPrefab.GetComponentInChildren<EmployerController>().GetCost;
 		employerPlaceholder.SetCost(employerCost);
 		employerPlaceholder.OnEmployerHire += HireEmployer;
 	}
@@ -102,9 +140,10 @@ public class GameController : MonoBehaviour
 		ShowShelvePlaceholder();
 	}
 
-	private void HireEmployer(object sender, GameObject product)
+	private void HireEmployer(object sender, EventArgs e)
 	{
 		Instantiate(employerPrefab);
+		OnEmployerHired?.Invoke(this, EventArgs.Empty);
 		isEmployerHired = true;
 	}
 
@@ -117,23 +156,3 @@ public class GameController : MonoBehaviour
 		}
 	}
 }
-
-/*
- * TODO
- * 
- * СОХРАНЕНИЕ
- * - сохранение открытых полок
- * - сохранение нанятого сотрудника
- * - сохранение данных плейсхолдера
- * 
- * 
- * ТРЕБОВАНИЯ К СЛЕДУЮЩЕМУ АПДЕЙТУ
- * - пофиксить отрисовыватель спрайтов
- * 
- * ДОПОЛНИТЕЛЬНО
- * - позиция всех объектов по оси Y
- * - настройка бабок типо к млн и тд
- * - fix берем предмет не подходящий по заказ -> выкидываем -> несем нужный -> бинго! выдает ошибку
- * - разбить префаб сотрудника
- * - перенести скрипт отрисовыватель спрайтов
-*/

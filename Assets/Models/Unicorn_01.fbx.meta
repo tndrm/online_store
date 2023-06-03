@@ -1,14 +1,29 @@
 fileFormatVersion: 2
-guid: dcaad5c9b506d6b45961f300ae818640
+guid: 0410d35c92a68f44fbf2ca3b065c145e
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Unicorn_01_Cube.028_Cube.030Mat
-    second: {fileID: 2100000, guid: 007a10e8a0f9ce7448a2462e8ce73883, type: 2}
+      name: 1A1A1A
+    second: {fileID: 2100000, guid: e06b8855fbcf18140a26fc294da5c74c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: F06292
+    second: {fileID: 2100000, guid: dfa2f5b7348f51d4d80b9a8d13ce481d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FF9800
+    second: {fileID: 2100000, guid: e06b8855fbcf18140a26fc294da5c74c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FFFFFF
+    second: {fileID: 2100000, guid: 4d5d3e3673ed41942a38097f2f6bf7e5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -19,7 +34,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    removeConstantScaleCurves: 1
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -45,6 +60,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -72,6 +88,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -104,6 +121,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 

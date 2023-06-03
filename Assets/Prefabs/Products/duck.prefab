@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 7916061453809403701}
   - component: {fileID: 6711836240805401154}
   m_Layer: 0
-  m_Name: Product1
+  m_Name: duck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,9 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0581cb0b34ff37c419e10c941a44550e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productType: Product1
+  productType: duck
   productSpritePrefab: {fileID: 3529948911904693563}
-  cost: 100
+  cost: 10
   productBuyingCost: 0
   shelvePosition: {fileID: 4643482439067820136, guid: 356c87590fa3fab4b9d2befc629595f6,
     type: 3}

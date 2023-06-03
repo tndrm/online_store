@@ -10,25 +10,19 @@ public class EmployerPlaceholder : MonoBehaviour
 	[SerializeField] AudioClip byyingSound;
 	[SerializeField] AudioClip payingCoinsSound;
 	private AudioSource audioSource;
-	private GameObject employerPrefab;
 	private int buyCost;
 	private BankController bank;
 	private int spendCoins = 0;
 
-	private int coinsToReduseInSec;
+	private int coinsToReduseInSec = 10;
 
-	public event EventHandler<GameObject> OnEmployerHire;
+	public event EventHandler OnEmployerHire;
 
 	void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
 
 		bank = (BankController)FindObjectOfType(typeof(BankController));
-		buyCost = 300;
-
-		slider.maxValue = buyCost;
-		coinsToReduseInSec = buyCost / 100;
-		UpdateSlider();
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -64,6 +58,8 @@ public class EmployerPlaceholder : MonoBehaviour
 	public void SetCost(int cost)
 	{
 		buyCost = cost;
+		slider.maxValue = buyCost;
+		UpdateSlider();
 	}
 
 	public void UpdateSlider()
@@ -74,7 +70,7 @@ public class EmployerPlaceholder : MonoBehaviour
 
 	private void BuyCurrentItem()
 	{
-		OnEmployerHire?.Invoke(this, employerPrefab);
+		OnEmployerHire?.Invoke(this, EventArgs.Empty);
 		audioSource.PlayOneShot(byyingSound);
 		Destroy(gameObject);
 	}

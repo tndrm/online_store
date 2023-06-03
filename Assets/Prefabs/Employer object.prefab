@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   packingTable: {fileID: 2046012213488115145}
+  employerCost: 300
 --- !u!54 &2046012213403860282
 Rigidbody:
   m_ObjectHideFlags: 0

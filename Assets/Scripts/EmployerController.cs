@@ -4,12 +4,16 @@ using UnityEngine.AI;
 public class EmployerController : MonoBehaviour
 {
 	[SerializeField] PackingTable packingTable;
+	[SerializeField] int employerCost;
 	private ShippingService shippingTable;
 	private ProductHolder productHolder;
 	private NavMeshAgent navMeshAgent;
 	private Product nextNededProduct;
 	private Vector3 destinationPoint;
 	private string readyOrderType;
+
+	public int GetCost => employerCost;
+
 	void Start()
 	{
 		navMeshAgent = GetComponent<NavMeshAgent>();

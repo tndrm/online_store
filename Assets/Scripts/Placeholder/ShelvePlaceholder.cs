@@ -14,19 +14,14 @@ public class ShelvePlaceholder : MonoBehaviour
 	private BankController bank;
 	private int spendCoins = 0;
 
-	private int coinsToReduseInSec;
+	private int coinsToReduseInSec = 10;
 
 	public event EventHandler<Product> OnShelveBuy;
 
 	void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
-
 		bank = (BankController)FindObjectOfType(typeof(BankController));
-
-		slider.maxValue = productPrefab.GetBuyingCost;
-		coinsToReduseInSec = productPrefab.GetBuyingCost / 100;
-		UpdateSlider();
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -62,6 +57,8 @@ public class ShelvePlaceholder : MonoBehaviour
 	public void SetSettings(Product product)
 	{
 		productPrefab = product;
+		slider.maxValue = productPrefab.GetBuyingCost;
+		UpdateSlider();
 	}
 
 	public void UpdateSlider()
