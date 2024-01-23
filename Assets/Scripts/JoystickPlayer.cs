@@ -3,13 +3,13 @@
 public class JoystickPlayer : MonoBehaviour
 {
     public float speed;
-    private VariableJoystick variableJoystick;
+    public VariableJoystick variableJoystick;
     private Rigidbody rb;
 
 	private void Start()
     {
 		variableJoystick = (VariableJoystick)FindObjectOfType(typeof(VariableJoystick));
-		rb = GetComponent<Rigidbody>();
+		rb = this.GetComponent<Rigidbody>();
 	}
     public void Update()
     {
