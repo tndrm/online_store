@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: body
+  m_Name: Employee_char
   m_Shader: {fileID: 4800000, guid: 3381d7ccf8d756546ba7dd0f2f58095f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -91,7 +91,7 @@ Material:
     - _UpVectorYaw: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.34779075, b: 0.33647794, a: 1}
+    - _Color: {r: 0.51886785, g: 0.5658557, b: 1, a: 1}
     - _Color1: {r: 1, g: 0, b: 0, a: 0}
     - _Color2: {r: 0.8050314, g: 0, b: 0, a: 0}
     - _DamageColor: {r: 0, g: 0, b: 0, a: 1}

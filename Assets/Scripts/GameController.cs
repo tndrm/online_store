@@ -119,7 +119,7 @@ public class GameController : MonoBehaviour
 		{
 			currentPlaceholder = Instantiate(placeholderPrefab, nextItemToBuy.GetShelvePosition.position, Quaternion.identity);
 			currentPlaceholder.SetSettings(nextItemToBuy);
-			currentPlaceholder.OnShelveBuy += onBuyingShelve;
+			currentPlaceholder.OnShelveBuy += OnBuyingShelve;
 		}
 	}
 
@@ -132,7 +132,7 @@ public class GameController : MonoBehaviour
 		employerPlaceholder.OnEmployerHire += HireEmployer;
 	}
 
-	private void onBuyingShelve(object sender, Product product)
+	private void OnBuyingShelve(object sender, Product product)
 	{
 		upgradeProductList.Remove(product);
 		nextItemToBuy = null;
