@@ -11,7 +11,7 @@ public class PackingTable : MonoBehaviour
 	[SerializeField] AudioClip putSound;
 	[SerializeField] AudioClip pakeOrderSound;
 	[SerializeField] AudioClip takeOrderSound;
-	[SerializeField] ProductHolder tableOwner;
+	public ProductHolder tableOwner;
 	public List<Product> nededItemsList;
 	private AudioSource audioSource;
 	private List<Product> readyOrders;

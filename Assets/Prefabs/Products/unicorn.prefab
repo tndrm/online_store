@@ -31,8 +31,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1981243794960099348}
   - {fileID: 7713267634021696488}
+  - {fileID: 1981243794960099348}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -62,18 +62,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2915893765973515619}
   m_Material: {fileID: 13400000, guid: 8dfda6aa7720efa47b3dcff62f7bc7a7, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1723144023780178434
 MeshRenderer:
@@ -148,12 +140,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2338271794783298315}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4506111996755991256
 CanvasRenderer:
@@ -198,7 +190,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 2338271794783298315}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0410d35c92a68f44fbf2ca3b065c145e,
@@ -224,17 +215,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0410d35c92a68f44fbf2ca3b065c145e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.012
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0410d35c92a68f44fbf2ca3b065c145e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.132
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0410d35c92a68f44fbf2ca3b065c145e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.148
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0410d35c92a68f44fbf2ca3b065c145e,
         type: 3}
@@ -277,9 +268,6 @@ PrefabInstance:
       value: Unicorn_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0410d35c92a68f44fbf2ca3b065c145e, type: 3}
 --- !u!4 &7713267634021696488 stripped
 Transform:

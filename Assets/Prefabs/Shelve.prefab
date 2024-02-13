@@ -145,8 +145,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7465916, y: 1, z: 1.6917014}
-  m_Center: {x: 0.009772569, y: 0, z: 0.0040555}
+  m_Size: {x: 1.5188861, y: 0.88016623, z: 1.5211868}
+  m_Center: {x: 0.002652526, y: 0, z: 0.00175488}
 --- !u!82 &-8817154171498779517
 AudioSource:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.85398793
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -252,8 +252,8 @@ NavMeshObstacle:
   m_GameObject: {fileID: 610685206374889960}
   m_Enabled: 1
   serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.725, y: 0.67, z: 0.725}
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1

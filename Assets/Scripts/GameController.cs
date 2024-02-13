@@ -9,7 +9,8 @@ public class GameController : MonoBehaviour
 	[SerializeField] List<Product> allProductsList;
 
 	[SerializeField] Shelve shelvePrefab;
-	[SerializeField] GameObject employerPrefab;
+	[SerializeField] PackingTable packingTablePrefab;
+	[SerializeField] EmployerController employerPrefab;
 	[SerializeField] Transform employerPosition;
 
 	[SerializeField] EmployerPlaceholder ePlaceholderPrefab;
@@ -118,6 +119,7 @@ public class GameController : MonoBehaviour
 		if (nextItemToBuy != null)
 		{
 			currentPlaceholder = Instantiate(placeholderPrefab, nextItemToBuy.GetShelvePosition.position, Quaternion.identity);
+			currentPlaceholder.transform.position = new Vector3(currentPlaceholder.transform.position.x, .01f, currentPlaceholder.transform.position.z);
 			currentPlaceholder.SetSettings(nextItemToBuy);
 			currentPlaceholder.OnShelveBuy += OnBuyingShelve;
 		}
@@ -142,7 +144,10 @@ public class GameController : MonoBehaviour
 
 	private void HireEmployer(object sender, EventArgs e)
 	{
-		Instantiate(employerPrefab);
+		PackingTable packingTable = Instantiate(packingTablePrefab, employerPosition.position, Quaternion.identity);
+		EmployerController employerController = Instantiate(employerPrefab);
+		employerController.packingTable = packingTable;
+		packingTable.tableOwner = employerController.GetComponent<ProductHolder>();
 		OnEmployerHired?.Invoke(this, EventArgs.Empty);
 		isEmployerHired = true;
 	}

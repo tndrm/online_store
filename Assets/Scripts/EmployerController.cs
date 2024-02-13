@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class EmployerController : MonoBehaviour
 {
-	[SerializeField] PackingTable packingTable;
+	public PackingTable packingTable;
 	[SerializeField] int employerCost;
 	private ShippingService shippingTable;
 	private ProductHolder productHolder;
