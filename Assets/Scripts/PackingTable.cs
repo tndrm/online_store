@@ -48,12 +48,7 @@ public class PackingTable : MonoBehaviour
 				if (holder.isMainPlayer) audioSource.PlayOneShot(takeOrderSound);
 				readyOrders.Remove(packedOrder);
 			}
-			if (nededItemsList.Count > 0)
-			{
-				UpdateNededListShowing();
-			}
-			else
-			{
+			if (nededItemsList.Count <= 0){
 				PackOrder();
 				if (holder.isMainPlayer) audioSource.PlayOneShot(pakeOrderSound);
 				orderGenerator.ShowNextOrder();
@@ -69,6 +64,8 @@ public class PackingTable : MonoBehaviour
 		readyForPaking.Add(item);
 		int index = nededItemsList.FindLastIndex(nededItem => nededItem.GetProductType == item.GetProductType);
 		nededItemsList.RemoveAt(index);
+		orderShowing.RemoveFromPanel(item);
+
 	}
 
 	private Vector3 GetPutPoint(GameObject currentItem)
@@ -116,13 +113,9 @@ public class PackingTable : MonoBehaviour
 	public void UploadNextOrder(List<Product> newOrderItems)
 	{
 		nededItemsList = newOrderItems;
-		UpdateNededListShowing();
+		orderShowing.DrawNewProductList(newOrderItems);
 	}
 
-	private void UpdateNededListShowing()
-	{
-		orderShowing.UpdateItemsListShowing(nededItemsList);
-	}
 
 	public Product GetNextNededItem()
 	{

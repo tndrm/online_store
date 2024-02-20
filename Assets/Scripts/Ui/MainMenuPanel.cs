@@ -11,6 +11,8 @@ public class MainMenuPanel : MonoBehaviour
 	{
 		progressSavingService = (ProgressSavingService)FindObjectOfType(typeof(ProgressSavingService));
 	}
+
+	
 	public void ClearProgress()
 	{
 		progressSavingService.ClearProgress();

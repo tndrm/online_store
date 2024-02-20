@@ -134,6 +134,9 @@ MonoBehaviour:
   shalve: {fileID: 9159712049806476993}
   gridDimensions: {x: 3, y: 3}
   spacing: 0.5
+  spawnDuration: 0.5
+  dropDuration: 1
+  dropHeight: 0.6
 --- !u!65 &4239229481169118142
 BoxCollider:
   m_ObjectHideFlags: 0

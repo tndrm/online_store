@@ -1,10 +1,16 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class OrderShowing : MonoBehaviour
 {
 	public RectTransform spritePanel;
-	private List<GameObject> productsSprites;
+	public float animationDuration = 0.5f;
+
+
+	private List<Product> productsSprites;
+
 
 	private List<GameObject> shownSprites;
 
@@ -18,29 +24,38 @@ public class OrderShowing : MonoBehaviour
 		float height = spritePanel.rect.height;
 		for (int i = 0; i < productsSprites.Count; i++)
 		{
-			GameObject sprite = Instantiate(productsSprites[i], spritePanel.transform);
+			GameObject sprite = Instantiate(productsSprites[i].GetSprite, spritePanel.transform);
+			sprite.transform.localScale = Vector3.zero;
+
+			sprite.transform.DOScale(Vector3.one, animationDuration).SetEase(Ease.OutBack);
 			sprite.GetComponent<RectTransform>().sizeDelta = new Vector2(height, height);
 
 			shownSprites.Add(sprite);
 		}
 	}
 
-	public void UpdateItemsListShowing(List<Product> products)
+	public void DrawNewProductList(List<Product> products)
 	{
-		ClearPanel();
-		productsSprites = new List<GameObject>();
-		foreach (Product product in products)
+		productsSprites = new List<Product>();
+		foreach (GameObject psprite in shownSprites)
 		{
-			productsSprites.Add(product.GetSprite);
+			Destroy(psprite);
+		}
+		foreach (Product p in products)
+		{
+			productsSprites.Add(p);
 		}
 		DrawPanel();
 	}
 
-	private void ClearPanel()
+	public void RemoveFromPanel(Product product)
 	{
-		foreach (GameObject psprite in shownSprites)
+		int index = productsSprites.FindIndex(p => p.GetProductType == product.GetProductType);
+		if (index >= 0)
 		{
-			Destroy(psprite);
+			Destroy(shownSprites[index]);
+			productsSprites.RemoveAt(index);
+			shownSprites.RemoveAt(index);
 		}
 	}
 }
