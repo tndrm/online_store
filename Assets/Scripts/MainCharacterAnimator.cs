@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MainCharacterAnimator : MonoBehaviour
 {
@@ -10,8 +11,12 @@ public class MainCharacterAnimator : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		Transform playerModel = transform.GetChild(0);
 		animator = playerModel.gameObject.GetComponent<Animator>();
+		ProductHolder productHolder = GetComponent<ProductHolder>();
+		productHolder.OnProduktTaken += changeHoldingAnim;
 	}
-    public void Update()
+
+
+	public void Update()
     {
 		if(rb.velocity != Vector3.zero)
 		{
@@ -21,5 +26,9 @@ public class MainCharacterAnimator : MonoBehaviour
 		{
 			animator.SetBool("run", false);
 		}
+	}
+	private void changeHoldingAnim(object sender, bool isHold)
+	{
+		animator.SetBool("hold", isHold);
 	}
 }

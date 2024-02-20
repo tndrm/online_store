@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ProductHolder : MonoBehaviour
@@ -7,6 +8,8 @@ public class ProductHolder : MonoBehaviour
 	private HoldedItemSaver saver;
 	public bool isMainPlayer = true;
 	private EmployerController employerController = null;
+	public event EventHandler<bool> OnProduktTaken;
+
 
 	private void Awake()
 	{
@@ -28,6 +31,8 @@ public class ProductHolder : MonoBehaviour
 			item.transform.rotation = transform.rotation;
 			holdedItem = item;
 			takenItem = item;
+			OnProduktTaken?.Invoke(this, true);
+
 			//saver.SaveHoldItem(item);
 		}
 		return takenItem;
@@ -45,6 +50,7 @@ public class ProductHolder : MonoBehaviour
 		{
 			putedItem = holdedItem;
 			holdedItem = null;
+			OnProduktTaken?.Invoke(this, false);
 			//saver.SaveHoldItem();
 		}
 		return putedItem;

@@ -21,8 +21,6 @@ public class ShippingService : MonoBehaviour
 	public JoystickPlayer player;
 	private void Start()
 	{
-		coinsAnimation.Play();
-
 		audioSource = GetComponent<AudioSource>();
 		bankController = (BankController)FindObjectOfType(typeof(BankController));
 	}
