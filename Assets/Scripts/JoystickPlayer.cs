@@ -11,7 +11,7 @@ public class JoystickPlayer : MonoBehaviour
 		variableJoystick = (VariableJoystick)FindObjectOfType(typeof(VariableJoystick));
 		rb = this.GetComponent<Rigidbody>();
 	}
-    public void Update()
+	public void FixedUpdate()
     {
 		Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
 		rb.velocity = direction * speed * Time.fixedDeltaTime;

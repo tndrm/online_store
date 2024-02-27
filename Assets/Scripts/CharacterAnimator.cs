@@ -22,7 +22,7 @@ public class CharacterAnimator : MonoBehaviour
 	}
 
 
-	public void Update()
+	public void FixedUpdate()
     {
 		if(rb.velocity != Vector3.zero)
 		{

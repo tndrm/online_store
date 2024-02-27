@@ -5941,7 +5941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8545bf0ed1b3e4d8303ae147dc70f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 80
+  speed: 100
   variableJoystick: {fileID: 0}
 --- !u!4 &404688773
 Transform:
